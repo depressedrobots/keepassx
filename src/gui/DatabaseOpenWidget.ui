@@ -10,7 +10,7 @@
     <height>250</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,0,1,0,0,3">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1,0,0,0,1,0,0,3">
    <property name="spacing">
     <number>8</number>
    </property>
@@ -36,6 +36,18 @@
    </item>
    <item>
     <widget class="QLabel" name="labelFilename"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="labelFileModified">
+     <property name="font">
+      <font>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </item>
    <item>
     <spacer name="verticalSpacer_3">
