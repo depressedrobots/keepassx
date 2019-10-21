@@ -27,6 +27,19 @@
 #include "keys/FileKey.h"
 #include "keys/PasswordKey.h"
 
+namespace
+{
+    QString lastModifiedString(const QString& filename)
+    {
+        QFileInfo info(filename);
+
+        if (!info.exists())
+            return {};
+
+        return info.lastModified().toString();
+    }
+}
+
 DatabaseOpenWidget::DatabaseOpenWidget(QWidget* parent)
     : DialogyWidget(parent)
     , m_ui(new Ui::DatabaseOpenWidget())
@@ -62,6 +75,7 @@ void DatabaseOpenWidget::load(const QString& filename)
     m_filename = filename;
 
     m_ui->labelFilename->setText(filename);
+    m_ui->labelFileModified->setText(QString("%1: %2").arg(tr("last modified"), lastModifiedString(filename)));
 
     if (config()->get("RememberLastKeyFiles").toBool()) {
         QHash<QString, QVariant> lastKeyFiles = config()->get("LastKeyFiles").toHash();
